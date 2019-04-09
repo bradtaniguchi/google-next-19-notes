@@ -4,7 +4,8 @@
   "description": "A repo of the personal notes I took during all the activities I attended at [google-next](https://cloud.withgoogle.com/next/sf). Last year I attended but took limited notes, this year I plan to keep a better track of everything I personall attend, and notes on other talks I watch online.",
   "main": "index.js",
   "scripts": {
-    "start": "npx markserv --browser=false --port=8080 docs"
+    "start": "npx markserv --browser=false --port=8080 docs",
+    "dev": "npx markserv --browser=false --l=true --port=8080 docs"
   },
   "repository": {
     "type": "git",
