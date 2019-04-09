@@ -1,0 +1,23 @@
+{
+  "name": "google-next-19-notes",
+  "version": "0.0.0",
+  "description": "A repo of the personal notes I took during all the activities I attended at [google-next](https://cloud.withgoogle.com/next/sf). Last year I attended but took limited notes, this year I plan to keep a better track of everything I personall attend, and notes on other talks I watch online.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx markserv --browser=false --port=8080 docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradtaniguchi/google-next-19-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradtaniguchi/google-next-19-notes/issues"
+  },
+  "homepage": "https://github.com/bradtaniguchi/google-next-19-notes#readme",
+  "devDependencies": {
+    "markserv": "^1.17.2"
+  }
+}
