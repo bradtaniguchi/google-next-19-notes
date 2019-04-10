@@ -1,0 +1,245 @@
+<h1>Sec 218: Designing the right security architecture for your APIs</h1>
+<p>matt blumberg - product manager
+Joel D'sa, Security Tech lead - Apigee</p>
+<hr>
+<h2>agenda</h2>
+<ul>
+<li>power of apis</li>
+<li>importance of visibility</li>
+<li>current threats</li>
+<li>architecture form the past and future trends</li>
+<li>how to secure your apis</li>
+</ul>
+<hr>
+<p>apis are a way to provide structure
+in a portable and scalable way.</p>
+<h3>Why security can't be an afterthought</h3>
+<p><strong>apigee api management</strong></p>
+<ul>
+<li>
+<p>developer management</p>
+</li>
+<li>
+<p>api analytics</p>
+</li>
+<li>
+<p>api services</p>
+</li>
+<li>
+<p>business examples for hotels via apis</p>
+</li>
+<li>
+<p>apis are powering business disruptions.</p>
+</li>
+<li>
+<p>many cases where companies didn't control APIs well</p>
+</li>
+<li>
+<p>we cant prevent all bugs, but visibility is important</p>
+</li>
+<li>
+<p>happens far to often.</p>
+</li>
+<li>
+<p>by 2022 apis will be the primary attach vector</p>
+</li>
+</ul>
+<hr>
+<h3>Importance of visibility</h3>
+<p>&quot;can't secure what you can't see&quot;</p>
+<p>apigee takes two prongs approach</p>
+<ul>
+<li>
+<p>operations team visibility</p>
+</li>
+<li>
+<p>security team visibility</p>
+</li>
+<li>
+<p>&quot;52%&quot; will leave mobile app if it takes longer than 3 seconds to load.</p>
+</li>
+<li>
+<p>need to be able to identify issues before users do.</p>
+</li>
+<li>
+<p>many issues are found thru the Ops team, instead of
+the security team.</p>
+</li>
+</ul>
+<hr>
+<h3>Current threats</h3>
+<ul>
+<li>security is a broad field. Lots of things to consider.</li>
+<li>very hard to tackle at the same time.</li>
+<li>&quot;take data based decisions&quot;</li>
+</ul>
+<hr>
+<p><strong>what threats do APIs face?</strong></p>
+<ul>
+<li>
+<p>very similar to software threats.</p>
+</li>
+<li>
+<p>basic software bugs</p>
+<ul>
+<li>lots of people buy lots of tools, and put stuff together</li>
+<li>get basic software engineering right.</li>
+<li>good tests</li>
+<li>code reviews</li>
+<li>software security reviews</li>
+<li>secure software development stack</li>
+<li>third party penetration tests</li>
+<li>consistent change management processes</li>
+</ul>
+</li>
+<li>
+<p>injection threats</p>
+<ul>
+<li>input validation, great protection.</li>
+<li>easy to add input-validation.</li>
+<li>2 things to think about
+<ol>
+<li>consistency - very important</li>
+<li>use of shared libraries.</li>
+</ol>
+<ul>
+<li>apigee provides input validation out of the box.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>service availability threats</p>
+<ul>
+<li>most common question is to prevent DDos attacks?</li>
+<li>scale out to handle DDos.
+<ul>
+<li>apigee provides rate limits.</li>
+<li>distrubuted caches, return frequent responses to frequent requests.</li>
+</ul>
+</li>
+<li>rely on DDOS protection offered by google frontend load balancrs</li>
+<li>cache responsees to frequent requests</li>
+<li>leverage apigree policies</li>
+</ul>
+</li>
+<li>
+<p>user identity</p>
+<ul>
+<li>
+<p>protect the user's of the API.</p>
+</li>
+<li>
+<p>going over history of treats to user info.</p>
+<ul>
+<li>in the mid 1990s. life was &quot;simple&quot;</li>
+<li>as internet grew more complicated, more sites. first inputs was usernames/passwords</li>
+<li>as it got more complex, reusable business logic got deployed to the same container</li>
+<li>concept of &quot;sticky sessions&quot;</li>
+<li>mobile stateless apps started to &quot;shift&quot;.
+<ul>
+<li>mobile used api gateways, but web still used cookies.</li>
+<li>underlying security model didn't change.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>security has not changed, exchange user credentials for cookies.</p>
+</li>
+<li>
+<p>sticky session perpetuated this design, permiters.</p>
+</li>
+<li>
+<p>permiters are good, isolated.</p>
+</li>
+<li>
+<p>microservices, changed from original approach.</p>
+</li>
+<li>
+<p>need an api gateway to protect them.</p>
+</li>
+<li>
+<p>in a world were you deploy microservices to a permieter, so how do you &quot;control&quot; it?</p>
+</li>
+<li>
+<p>deploy api gateway, expose only whats required and manage relationships between service providers and consumers.</p>
+</li>
+<li>
+<p>deploy service mesh, be able to compose applications from microservices.</p>
+</li>
+<li>
+<p>manage identities effectively.</p>
+</li>
+<li>
+<p>&quot;Google cloud's identity platform&quot;</p>
+</li>
+<li>
+<p>another remnant of traditional approach.</p>
+<ul>
+<li>each service will access auth and authz server.</li>
+<li>the two auth and authz services become single points of failure.</li>
+<li>migrate to &quot;jwt tokens&quot;</li>
+<li>connect to OIDC server, get OIDC to get OAuth2 server, only get access to what for a limited time.</li>
+<li>&quot;zero trust, authenticate everyone all the time&quot;</li>
+</ul>
+</li>
+<li>
+<p>keep user experience as fluid as possible.</p>
+</li>
+<li>
+<p>developer portal, use apigee out of the box developer portal</p>
+<ul>
+<li>allows api consumer, to know what is availble to access.</li>
+<li>try out API, and register for a key, automated, with metrics</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>insider treats</p>
+<ul>
+<li>a lot of people are not aware, but lots of companies have been comprimised due to it.</li>
+<li>time bound dedicated access, also for employees and priviliedged users.</li>
+<li>enforce auth to access API program.</li>
+<li>effective change mangement</li>
+</ul>
+</li>
+<li>
+<p>scame and abuse</p>
+<ul>
+<li>lots are bot traffic can drive significant percentage of your traffic</li>
+<li>passwords are commonly shared across sites</li>
+<li>2 things todo, prevention, and visibility
+<ul>
+<li>prevention
+<ul>
+<li>more on the client, authenticate clients.</li>
+<li>valid use case for non-auth clients, what todo?
+<ul>
+<li>recaptcha, slows spam and abuse traffic.</li>
+<li>v2 was very popular, but is a jarring traffic</li>
+<li>v3 just gives a score automatically.</li>
+<li>&quot;clock block model&quot; for another version.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>visbility
+<ul>
+<li>deploy cloud armor</li>
+<li>apigee sense, get a better view on what attackers are doing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>recap</h3>
+<ul>
+<li>api management is a key part of your security architecture</li>
+<li>api security should not be an afterthought</li>
+<li>for a secrutruec security approach use data and metrics to responsed.</li>
+</ul>

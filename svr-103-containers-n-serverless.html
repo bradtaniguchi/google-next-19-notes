@@ -1,0 +1,173 @@
+<h1>&quot;cloud run talk&quot;</h1>
+<p>First started with app-engine, came up before serverless was a thing.
+Added cloud functions, and these two together provide servless compute.
+so far very successful so far.
+&quot;Google is my SRE&quot;</p>
+<hr>
+<p>serverless is not accessible to everyone.</p>
+<ul>
+<li>&quot;How can we use existing binaries?&quot;</li>
+<li>&quot;We can't be locked in&quot;</li>
+<li>&quot;Can you support language ____?&quot;</li>
+</ul>
+<hr>
+<h2>What is serverless?</h2>
+<p><strong>operational model</strong></p>
+<ul>
+<li>no infra management</li>
+<li>managed security</li>
+<li>pay only for usage
+<strong>programming model</strong></li>
+<li>service-based</li>
+<li>event-driven</li>
+<li>open</li>
+</ul>
+<hr>
+<p><strong>growth of containers in the industry</strong></p>
+<ul>
+<li>way to easily move code and binaries between environments.</li>
+<li>&quot;what if it could be easier?&quot;</li>
+</ul>
+<hr>
+<p><strong>demo</strong></p>
+<ul>
+<li>go to cloud run, select container to deploy.</li>
+<li>click create <strong>done</strong></li>
+</ul>
+<p>&quot;what can I do with cloud run?&quot;</p>
+<ul>
+<li>there are broad cases, but allows cloud run to run deploy &quot;stateless cloud run&quot;</li>
+</ul>
+<p><strong>examples:</strong></p>
+<ul>
+<li>website</li>
+<li>api endpoint</li>
+<li>mobile backend</li>
+<li>webhook</li>
+<li>private</li>
+<li>microservices</li>
+<li>async tasks</li>
+</ul>
+<hr>
+<h2>features of cloud run</h2>
+<p><strong>any programing language</strong></p>
+<p><strong>any library</strong></p>
+<p><strong>any binary</strong></p>
+<p><strong>ecosystem of base images</strong></p>
+<p>containers are industry standard (better than a zip file)</p>
+<hr>
+<h2>talker from airbus.</h2>
+<ul>
+<li>
+<p>satellite imagery as a service</p>
+</li>
+<li>
+<p>different use cases from sat images.</p>
+</li>
+<li>
+<p>requires injecting thousands of images, gbs of raw compressed data.</p>
+</li>
+<li>
+<p>this leads to a number of challenges.</p>
+</li>
+<li>
+<p>minimize storage size, and respond to changes.</p>
+</li>
+<li>
+<p>save storage costs, no duplication of data</p>
+</li>
+</ul>
+<hr>
+<p><strong>steps</strong>
+(wow why are these even listed haha)</p>
+<ol>
+<li>code</li>
+<li>build</li>
+<li>run</li>
+</ol>
+<hr>
+<p><strong>code</strong></p>
+<ul>
+<li>container runtime contract</li>
+<li>http on a given port.</li>
+<li><strong>no local state</strong>, can use persistent state.</li>
+</ul>
+<p><strong>build</strong></p>
+<ul>
+<li>Docker image and push to container registery</li>
+<li>cloud build, no local tooling, can also do docker or other stuffs</li>
+<li>CI/CD</li>
+</ul>
+<p><strong>run</strong></p>
+<ul>
+<li>container registery, one click/command, deploy to cloud run</li>
+<li>stable http/url if you want to expose to internet..</li>
+<li><strong>happens in a few seconds</strong></li>
+</ul>
+<hr>
+<p><strong>demo</strong></p>
+<ul>
+<li>libreoffice headless to convert ms-word to pdf function</li>
+<li>using docker-file</li>
+<li>point to google cloud registry
+(still in beta)</li>
+</ul>
+<hr>
+<p>&quot;natively serverless&quot;</p>
+<ul>
+<li>in the old world, need to provision servers. Want to overprovision serviers.</li>
+<li>great thing in cloud run, it auto-scales.</li>
+<li>scales up fast, scales down to zero.</li>
+<li>pay for exact cpu, memory, and number of requests.</li>
+<li>down to 100ms</li>
+</ul>
+<hr>
+<p>back to demo, transform 1k pdfs in 1 minute.</p>
+<ul>
+<li>2gb container with open office scaled.</li>
+</ul>
+<hr>
+<p>third pillar is &quot; one experience where you want it&quot;</p>
+<ul>
+<li>portability means different things to different people.</li>
+<li>&quot;what about kubernetes and KE?&quot;</li>
+<li>kubernetes is good for the operator, but not for the developer</li>
+<li>cloud run on GKE,</li>
+<li>same as cloud run but on kubernetes</li>
+<li>more flexibility and control, operator required.</li>
+<li>integrates with k8s-based policy, custom nodes, hardware accelerators VPC</li>
+<li>lets you use existing investment in kubernetes.</li>
+</ul>
+<hr>
+<p>fully serverless,</p>
+<ul>
+<li>no cluster to manage with cloud run
+<strong>or</strong></li>
+<li>cloud run on GKE</li>
+</ul>
+<hr>
+<p>all under <code>gcloud run</code></p>
+<ul>
+<li>
+<p>did this based on knative</p>
+</li>
+<li>
+<p>common api and runtime environment for serveing workloads.</p>
+</li>
+<li>
+<p>portable of experiences tooling and workloads between knative environments</p>
+</li>
+<li>
+<p>can even run serverlss on-prem.
+knative.dev</p>
+</li>
+<li>
+<p>stackdriver integration as usual</p>
+</li>
+<li>
+<p>svr302</p>
+</li>
+</ul>
+<p>twitter links
+@ryangregg
+@steren</p>

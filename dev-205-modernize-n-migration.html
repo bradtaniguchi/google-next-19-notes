@@ -1,0 +1,114 @@
+<h1>dev205: app modernization and migration with APIs</h1>
+<p>joshua rogers
+parna bhattacharya</p>
+<hr>
+<ul>
+<li>thinking about end users first, before the technologies.</li>
+<li>&quot;outside in thinking&quot;</li>
+<li>&quot;Woolies X&quot; largest realtailer in Australia.</li>
+</ul>
+<hr>
+<h2>agenda</h2>
+<ul>
+<li>paths twoards app modernization and app migration</li>
+<li>app modernization and migration challenges</li>
+<li>woolworths connected jounry</li>
+<li>woolworths modernisation and migration strategy</li>
+<li>omnichannel experience - architecture and demo</li>
+</ul>
+<hr>
+<h3>modernization and migration challenges</h3>
+<ul>
+<li>business continuity</li>
+<li>security risks
+<ul>
+<li>when data is being migrated, its being duplicated.</li>
+<li>needs to be done in a secure way.</li>
+</ul>
+</li>
+<li>visibility</li>
+<li>interoperability</li>
+<li>unmanaged services
+<ul>
+<li>migrate to microservice architecture. might end up with unintended behavior</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>introduction to apigee (another talk going over this product again)</h3>
+<ul>
+<li>apigee could be used as a &quot;middle-man&quot; between clients and actual back-ends.
+<ul>
+<li>less of an api use-case and more of a generic use-case it seems.</li>
+<li>act as a security mediation and enforcement layer.</li>
+<li>the protocols and mechanisms might differ from the legacy app.</li>
+<li>full visbility, has required how the migration is progressing</li>
+<li>api facade (sounds useful)</li>
+<li>service management</li>
+<li>acts as a &quot;service mesh&quot; (mentioned this in another talk)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>woolworths</h3>
+<ul>
+<li>
+<p>digitial transformation, websites were getting outpaced.</p>
+</li>
+<li>
+<p>migrated into the cloud, and &quot;lifted and shift&quot; and &quot;modernize&quot;</p>
+</li>
+<li>
+<p>woolies X, combined a number of efforts together.</p>
+</li>
+<li>
+<p>11.5m award members, only 24m in austrailia.</p>
+</li>
+<li>
+<p>only 12m households, almost 1:1 for every household (!)</p>
+</li>
+<li>
+<p>2b in transactions, a lot for a supermarket.</p>
+</li>
+</ul>
+<hr>
+<h3>in the beginning</h3>
+<ul>
+<li>
+<p>2 businesses, 6 api developers, 15 apis, 45 trasactions per seconds.</p>
+</li>
+<li>
+<p>apigee streamlined it:</p>
+<ul>
+<li>developer poral</li>
+<li>permissions</li>
+<li>api abuse prevention</li>
+<li>api monitoring</li>
+</ul>
+</li>
+<li>
+<p>new services are connected, via data.</p>
+</li>
+<li>
+<p>10 businesses, 18+ api developers, 1k apis, 480 transactions per second.</p>
+</li>
+<li>
+<p>api is an abstraction layer.</p>
+</li>
+<li>
+<p>only year and a half in, to re-developer loader scripts.</p>
+</li>
+<li>
+<p>test and go thru all scenarios to make sure everything is &quot;ok&quot;</p>
+</li>
+<li>
+<p>30 minute window of execution.</p>
+</li>
+</ul>
+<hr>
+<h3>Olive Demo</h3>
+<ul>
+<li>AI assistent.</li>
+<li>added, updated online wooliesworth shopping cart using google assistant</li>
+<li>used dialog flow, GKE, and APIGEE.</li>
+</ul>
