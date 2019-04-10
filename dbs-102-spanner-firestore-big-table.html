@@ -1,0 +1,173 @@
+
+<html>
+<head>
+<meta charset="utf-8" />
+  <title>Google Next 19 Notes</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+    rel="stylesheet"
+  />
+  <style>
+    html body {
+      font-family: 'Roboto',sans-serif
+    }
+  </style>
+</head>
+<body>
+<p>DBS102 - Spanner, firestore, and bigtable: connecting the dots</p>
+<ul>
+<li>arpita shrivastava</li>
+<li>fred wulff</li>
+</ul>
+<p>both from Streak</p>
+<hr>
+<p>&quot;All Cloud Datastore all the time&quot;</p>
+<ul>
+<li>
+<p>cloud datastore</p>
+</li>
+<li>
+<p>what is datastore?</p>
+</li>
+<li>
+<p>look up by key or indexed values</p>
+</li>
+<li>
+<p>no jons or grouping GQL</p>
+</li>
+<li>
+<p>why we picked it</p>
+</li>
+<li>
+<p>schemaless can add or remove properties as you go along</p>
+</li>
+<li>
+<p>hosted by googel, no management</p>
+</li>
+<li>
+<p>one candidate there is only one choice, but what about now?</p>
+</li>
+<li>
+<p>15 terribytes of data on it over the years.</p>
+</li>
+</ul>
+<hr>
+<h2>working with cloud datastore</h2>
+<ul>
+<li>entity groups
+<ul>
+<li>unts of consistency and transactionality</li>
+<li>consistency throughput considerations.</li>
+<li>most highly correlated group together.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>cloud datastore challenges</h2>
+<ul>
+<li>entity group
+<ul>
+<li>conention write at 1/s</li>
+<li>permanent entity group relationshipos</li>
+<li>transactions limited to 25 entity groups, 500 entities</li>
+</ul>
+</li>
+<li>client-side views</li>
+<li>joins and application complexity
+<ul>
+<li>datastore didn't provide any utility to do joins really hurt.
+(seems like lots of issues that will hurt with growth)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<hr>
+<h2>Cloud Firestore</h2>
+<ul>
+<li>
+<p>latest version of datastore.</p>
+</li>
+<li>
+<p>what is firestore</p>
+<ul>
+<li>two modes, realtime and datastore</li>
+<li>basic idea: drop in replacement but better.</li>
+<li>better = the benefits new infastructure + behavior of datasource.</li>
+</ul>
+</li>
+<li>
+<p>why picked?</p>
+<ul>
+<li>most app data is still in cloud data store</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>The metadata problem</h2>
+<ul>
+<li>the underlying issue is collaborating on email is hard.</li>
+<li>the backend problem is a complex graph-like model.</li>
+<li>&quot;graph database challenge&quot;</li>
+<li>have to be able do the edge traversal quickly</li>
+<li>permissions are a &quot;huge&quot; deal, lots of potential sensitive information.</li>
+<li>lots of solutions in the market, but looking for a solution from google.</li>
+<li>ended up using <strong>cloud spanner</strong>, about a year old.</li>
+</ul>
+<hr>
+<p><strong>cloud spanner</strong></p>
+<ul>
+<li>globally consistent RDMS service</li>
+<li>&quot;magic clock thing&quot;</li>
+<li>sql support</li>
+<li>interleaved tables</li>
+<li>why picked it?
+<ul>
+<li>transactions</li>
+<li>graph queries</li>
+<li>campared to self-hosted database, no ops</li>
+<li>live adding/deleting columns</li>
+<li>fits relational data model</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>issues found with cloud spanner</strong></p>
+<ul>
+<li>&quot;too smart for its own good**</li>
+<li>assume big query is some &quot;back-end bulk task&quot;, and make sure the big query &quot;goes last&quot;
+<ul>
+<li>doesn't fit with the use-case, since large threads are the most important, but these
+take the longest.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>cloud big-table</strong></p>
+<ul>
+<li>&quot;just a sorted key-value store.&quot;</li>
+<li>no secondary indexes, just lookup key or lookup range</li>
+<li>two modes:
+<ul>
+<li>single zone availability, single row transactions</li>
+<li>no transactions in multi-zone</li>
+</ul>
+</li>
+<li>very simple and very fast</li>
+<li>why picked it?
+<ul>
+<li>continue using spanner for transactionality, use bigTable for each performant indexes</li>
+<li>lots of parallel range scans for graph query.</li>
+<li>10k reads/secnode</li>
+<li>not a good tool for every job, but the best tool for some jobs.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>example of cloud big table</strong>
+<code>cbt</code>  is the cloud big table CLI.</p>
+
+</body>
+</html>
