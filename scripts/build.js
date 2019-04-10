@@ -1,6 +1,7 @@
 const fs = require('fs');
 const MarkdownIt = require('markdown-it');
 const md = new MarkdownIt();
+const { templatePrefix, templateSuffix } = require('./template');
 
 /**
  * Returns the name of all the files in the given directory
@@ -56,15 +57,21 @@ const copyFile = (src, dist) =>
     fs.copyFile(src, dist, err => (err ? reject(err) : resolve()))
   );
 /**
+ * Wraps the given html content with a "template" page body, so we can apply
+ * styling and other "effects" onto the page.
+ */
+const wrapTemplate = content => `${templatePrefix}${content}${templateSuffix}`;
+
+/**
  * Reads the file, transforms to markdown, and writes to the given path with the same name of the file.
  */
 const toRenderedMarkdown = async (filename, params = {}) => {
   const { inDir = 'docs', outDir = 'build' } = params;
   const file = await loadFile(`${inDir}/${filename}`);
-  const markdown = md.render(file);
+  const html = wrapTemplate(md.render(file));
   const path = `${outDir}/${getNameWithoutExtension(filename)}.html`;
   console.log('writing file: ', path);
-  return writeFile(path, markdown);
+  return writeFile(path, html);
 };
 
 (async () => {
